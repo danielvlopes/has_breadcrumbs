@@ -48,8 +48,8 @@ On your view (possibly application.html.erb):
 
 You can set your own separator:
 
-  <p>
-  	You are here: <%= breadcrumb.display('|') %>
-  </p>
+	<p>
+  		You are here: <%= breadcrumb.display('|') %>
+	</p>
 
 Copyright (c) 2008 Nando Vieira, released under the MIT license
