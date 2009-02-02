@@ -21,11 +21,13 @@ class Breadcrumb
       options[:class] << " last" if size - 1 == index
       options[:class].squish!
       
-      if url.nil?
-        content_tag(:span, name, options)
-      else
-        content_tag(:a, name, options.merge(:href => url))
+      if size > 1
+        if url.nil? || (size - 1 == index)
+          content_tag(:span, name, options)
+        else
+          content_tag(:a, name, options.merge(:href => url))
+        end
       end
-    end.join(" <span class=\"separator\">#{separator}</span> ")
+    end.join(" <span>#{separator}</span> ")
   end
 end
