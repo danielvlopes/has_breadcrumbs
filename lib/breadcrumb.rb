@@ -24,9 +24,9 @@ class Breadcrumb
         options[:class].squish!
 
         if url.nil? || (size - 1 == index)
-          content_tag(:span, name, options)
+          content_tag(:li, name, options)
         else
-          content_tag(:a, name, options.merge(:href => url))
+          content_tag(:li, content_tag(:a, name, options.merge(:href => url))) 
         end
       end.join
       
