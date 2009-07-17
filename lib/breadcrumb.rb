@@ -11,23 +11,28 @@ class Breadcrumb
     @items << [name, url, options]
   end
   
-  def display(separator="&#187;")
+  def display
     size = @items.size
-    @items.to_enum(:each_with_index).collect do |item, index|
-      name, url, options = item
+    
+    if size > 1    
+      crumbs = @items.to_enum(:each_with_index).collect do |item, index|
+        name, url, options = item
       
-      options[:class] ||= ""
-      options[:class] << " breadcrumb item-#{index}"
-      options[:class] << " last" if size - 1 == index
-      options[:class].squish!
-      
-      if size > 1
+        options[:class] ||= ""
+        options[:class] << " item-#{index}"
+        options[:class] << " last" if size - 1 == index
+        options[:class].squish!
+
         if url.nil? || (size - 1 == index)
           content_tag(:span, name, options)
         else
           content_tag(:a, name, options.merge(:href => url))
         end
-      end
-    end.join(" <span>#{separator}</span> ")
+      end.join
+      
+      content_tag(:ul, crumbs, :id=>"breadcrumbs")
+    end
+    
   end
+  
 end
