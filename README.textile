@@ -1,19 +1,16 @@
-has_breadcrumbs
-===============
+h1. has_breadcrumbs
 
 has_breadcrumbs is a simple plugin that adds a `breadcrumb` object into 
 controllers and views.
 
-Instalation
------------
+h2. Instalation
 
-1) Install the plugin with `script/plugin install git://github.com/fnando/has_breadcrumbs.git`
+1) Install the plugin with `script/plugin install git://github.com/danielvlopes/has_breadcrumbs.git`
 
-Usage
------
+h2. Usage
 
 On your controller:
-
+<pre>
 	class ApplicationController < ActionController::Base
 	  before_filter :add_initial_breadcrumbs
 	
@@ -28,28 +25,46 @@ On your controller:
 	    breadcrumb.add 'Things', things_path
 	  end
 	end
+</pre>
 
 You don't need to provide an URL; in that case, a span will be generated 
 instead of a link:
 
-    breadcrumb.add 'Some page'
+<pre>
+	breadcrumb.add 'Some page'
+</pre>
 
 You can set additional HTML attributes if you need to:
 
-	breadcrumb.add 'Home', root_path,
-		:id => 'home', 
-		:title => 'Go to the home page'
+<pre>
+	breadcrumb.add 'Home', root_path, :id => 'home', :title => 'Go to the home page'
+</pre>
 
 On your view (possibly application.html.erb):
   
-    <p>
-  	  You are here: <%= breadcrumb.display %>
-    </p>
+<pre>
+	You are here: <%= breadcrumb.display %>
+</pre>
 
 You can set your own separator:
 
+<pre>
 	<p>
-  		You are here: <%= breadcrumb.display('|') %>
+  	You are here: <%= breadcrumb.display('|') %>
 	</p>
+</pre>
 
-Copyright (c) 2008 Nando Vieira, released under the MIT license
+The output in your html will be something like below:
+
+<ul id="breadcrumbs">
+	<li class="item-0"><a href="#">Home</a></li>
+	<li class="item-1"><a href="#">Main section</a></li>
+	<li class="item-2"><a href="#">Sub section</a></li>		
+	<li class="item-3 last">The page you are on right now</li>
+</ul>
+
+For a good css example take a look in examples folder.
+
+This work is based on "http://github.com/fnando/has_breadcrumbs/tree/master":http://github.com/fnando/has_breadcrumbs/tree/master by Nando Vieira.
+
+This adaptation is maded by Daniel Lopes, and still under the MIT license.
