@@ -1,8 +1,5 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-# unset models used for testing purposes
-Object.unset_class('SampleController')
-
 class SampleController < ActionController::Base
 end
 
@@ -27,33 +24,33 @@ describe "has_breadcrumbs" do
     @app.breadcrumb.add 'something'
   end
   
-  it "should return span when no link is provided" do
-    @breadcrumb.add 'Things'
-    @breadcrumb.display.should have_tag('span.breadcrumb.item-0.last', 'Things')
-  end
-  
-  it "should return A tag when link is provided" do
-    @breadcrumb.add 'Things', '/things'
-    @breadcrumb.display.should have_tag('a.breadcrumb.item-0.last[href=/things]', 'Things')
-  end
-  
-  it "should use default separator" do
-    @breadcrumb.add 'Things'
-    @breadcrumb.add 'Something'
-    @breadcrumb.display.should have_tag('span.separator', '&#187;')
-  end
-  
-  it "should use custom separator" do
-    @breadcrumb.add 'Things'
-    @breadcrumb.add 'Something'
-    @breadcrumb.display('|').should have_tag('span.separator', '|')
-  end
-  
-  it "should use options" do
-    @breadcrumb.add 'Things', '/things', :rel => 'external', :id => 'things', :class => 'link'
-    @breadcrumb.display.should have_tag('a#things.breadcrumb.item-0.last.link[href=/things][rel=external]')
-  end
-  
+  # it "should return span when no link is provided" do
+  #   @breadcrumb.add 'Things'
+  #   @breadcrumb.display.should have_tag('span.breadcrumb.item-0.last', 'Things')
+  # end
+  # 
+  # it "should return A tag when link is provided" do
+  #   @breadcrumb.add 'Things', '/things'
+  #   @breadcrumb.display.should have_tag('a.breadcrumb.item-0.last[href=/things]', 'Things')
+  # end
+  # 
+  # it "should use default separator" do
+  #   @breadcrumb.add 'Things'
+  #   @breadcrumb.add 'Something'
+  #   @breadcrumb.display.should have_tag('span.separator', '&#187;')
+  # end
+  # 
+  # it "should use custom separator" do
+  #   @breadcrumb.add 'Things'
+  #   @breadcrumb.add 'Something'
+  #   @breadcrumb.display('|').should have_tag('span.separator', '|')
+  # end
+  # 
+  # it "should use options" do
+  #   @breadcrumb.add 'Things', '/things', :rel => 'external', :id => 'things', :class => 'link'
+  #   @breadcrumb.display.should have_tag('a#things.breadcrumb.item-0.last.link[href=/things][rel=external]')
+  # end
+  # 
   it "should add new items" do
     @breadcrumb.add 'Things', '/things', :id => 'things'
     @breadcrumb.add 'Something', '/things/something', :id => 'something'
