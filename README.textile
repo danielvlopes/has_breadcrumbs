@@ -1,6 +1,6 @@
 h1. has_breadcrumbs
 
-has_breadcrumbs is a simple plugin that adds a `breadcrumb` object into 
+has_breadcrumbs is a simple plugin that adds a `breadcrumb` object into
 controllers and views.
 
 h2. Instalation
@@ -27,7 +27,7 @@ class ThingsController < ApplicationController
 end
 </pre>
 
-You don't need to provide an URL; in that case, a span will be generated 
+You don't need to provide an URL; in that case, a span will be generated
 instead of a link:
 
 <pre>
@@ -41,7 +41,7 @@ breadcrumb.add 'Home', root_path, :id => 'home', :title => 'Go to the home page'
 </pre>
 
 On your view (possibly application.html.erb):
-  
+
 <pre>
 You are here: <%= breadcrumb.display %>
 </pre>
@@ -56,12 +56,14 @@ You can set your own separator:
 
 The output in your html will be something like below:
 
-<ul id="breadcrumbs">
-	<li class="item-0"><a href="#">Home</a></li>
-	<li class="item-1"><a href="#">Main section</a></li>
-	<li class="item-2"><a href="#">Sub section</a></li>		
-	<li class="item-3 last">The page you are on right now</li>
-</ul>
+<code>
+	<ul id="breadcrumbs">
+		<li class="item-0"><a href="#">Home</a></li>
+		<li class="item-1"><a href="#">Main section</a></li>
+		<li class="item-2"><a href="#">Sub section</a></li>
+		<li class="item-3 last">The page you are on right now</li>
+	</ul>
+</code>
 
 For a good css example take a look in examples folder.
 
