@@ -1,7 +1,6 @@
 h1. has_breadcrumbs
 
-has_breadcrumbs is a simple plugin that adds a `breadcrumb` object into
-controllers and views.
+has_breadcrumbs is a simple plugin that adds a breadcrumb object into controllers and views.
 
 h2. Instalation
 
@@ -10,6 +9,7 @@ h2. Instalation
 h2. Usage
 
 On your controller:
+
 <pre>
 class ApplicationController < ActionController::Base
 	before_filter :add_initial_breadcrumbs
