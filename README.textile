@@ -11,47 +11,47 @@ h2. Usage
 
 On your controller:
 <pre>
-	class ApplicationController < ActionController::Base
-	  before_filter :add_initial_breadcrumbs
-	
-	  private
-	    def add_initial_breadcrumbs
-	      breadcrumb.add 'Home', root_path
-	    end
-	end
+class ApplicationController < ActionController::Base
+	before_filter :add_initial_breadcrumbs
 
-	class ThingsController < ApplicationController
-	  def index
-	    breadcrumb.add 'Things', things_path
-	  end
+	private
+		def add_initial_breadcrumbs
+			breadcrumb.add 'Home', root_path
+		end
+end
+
+class ThingsController < ApplicationController
+	def index
+		breadcrumb.add 'Things', things_path
 	end
+end
 </pre>
 
 You don't need to provide an URL; in that case, a span will be generated 
 instead of a link:
 
 <pre>
-	breadcrumb.add 'Some page'
+breadcrumb.add 'Some page'
 </pre>
 
 You can set additional HTML attributes if you need to:
 
 <pre>
-	breadcrumb.add 'Home', root_path, :id => 'home', :title => 'Go to the home page'
+breadcrumb.add 'Home', root_path, :id => 'home', :title => 'Go to the home page'
 </pre>
 
 On your view (possibly application.html.erb):
   
 <pre>
-	You are here: <%= breadcrumb.display %>
+You are here: <%= breadcrumb.display %>
 </pre>
 
 You can set your own separator:
 
 <pre>
-	<p>
-  	You are here: <%= breadcrumb.display('|') %>
-	</p>
+<p>
+ 	You are here: <%= breadcrumb.display('|') %>
+</p>
 </pre>
 
 The output in your html will be something like below:
