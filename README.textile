@@ -12,18 +12,19 @@ On your controller:
 
 <pre>
 class ApplicationController < ActionController::Base
-	before_filter :add_initial_breadcrumbs
+  before_filter :add_initial_breadcrumbs
 
-	private
-		def add_initial_breadcrumbs
-			breadcrumb.add 'Home', root_path
-		end
+  private
+    def add_initial_breadcrumbs
+      breadcrumb.add 'Home', root_path
+    end
 end
 
 class ThingsController < ApplicationController
-	def index
-		breadcrumb.add 'Things', things_path
-	end
+  def index
+    # you can also use << instead of .add
+    breadcrumb.add 'Things', things_path
+  end
 end
 </pre>
 
@@ -40,7 +41,7 @@ You can set additional HTML attributes if you need to:
 breadcrumb.add 'Home', root_path, :id => 'home', :title => 'Go to the home page'
 </pre>
 
-On your view (possibly application.html.erb):
+On your view:
 
 <pre>You are here: <%= breadcrumb.display %></pre>
 
@@ -53,16 +54,16 @@ You are here: <%= breadcrumb.display %>
 The output in your html will be something like below:
 
 <pre>
-	<ul id="breadcrumbs">
-		<li class="item-0"><a href="#">Home</a></li>
-		<li class="item-1"><a href="#">Main section</a></li>
-		<li class="item-2"><a href="#">Sub section</a></li>
-		<li class="item-3 last">The page you are on right now</li>
-	</ul>
+  <ul id="breadcrumbs">
+    <li class="item-0"><a href="#">Home</a></li>
+    <li class="item-1"><a href="#">Main section</a></li>
+    <li class="item-2"><a href="#">Sub section</a></li>
+    <li class="item-3 last">The page you are on right now</li>
+  </ul>
 </pre>
 
 For a good css example take a look in examples folder.
 
 This work is based on "http://github.com/fnando/has_breadcrumbs/tree/master":http://github.com/fnando/has_breadcrumbs/tree/master by Nando Vieira.
 
-This adaptation is maded by Daniel Lopes, and still under the MIT license.
+Adaptation made by Daniel Lopes, under the MIT license.
