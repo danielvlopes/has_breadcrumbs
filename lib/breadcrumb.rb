@@ -7,6 +7,8 @@ class Breadcrumb
     @items = []
   end
 
+  alias :<<, :add
+
   def add(name, url=nil, options={})
     @items << [name, url, options]
   end
